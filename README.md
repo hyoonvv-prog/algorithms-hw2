@@ -43,6 +43,12 @@
 `make experiment`는 적재율별 탐색 비교 횟수와 이론값을
 `experiments/probe_results.csv`에 기록하고, `experiments/probe_results.svg` 그래프를 만듭니다.
 
+`make serve`는 로컬 전용(`127.0.0.1:8000`)으로 실행합니다. 입력 폼에서 URL을
+제출하면 단축 코드를 돌려주고, `/table`에서 해시 테이블과 Horner 계산을
+확인할 수 있습니다. Codespaces에서 휴대폰으로 확인할 때는
+`make serve HOST=0.0.0.0`으로 실행한 뒤 포트 탭에서 8000번 포트의 공개 여부를
+설정하세요. 확인을 마치면 서버를 종료하고 포트를 Private으로 되돌립니다.
+
 ## 로컬에서 하기
 
 ```sh
