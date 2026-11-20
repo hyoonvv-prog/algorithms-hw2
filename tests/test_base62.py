@@ -1,6 +1,6 @@
 import unittest
 
-from src.base62 import decode, encode
+from src.base62 import ALPHABET, decode, encode
 
 
 class Base62Tests(unittest.TestCase):
@@ -11,6 +11,12 @@ class Base62Tests(unittest.TestCase):
         self.assertEqual(encode(61), "Z")
         self.assertEqual(encode(62), "10")
         self.assertEqual(encode(3843), "ZZ")
+
+    def test_digits_follow_the_specified_alphabet_order(self):
+        for value, character in enumerate(ALPHABET):
+            with self.subTest(value=value, character=character):
+                self.assertEqual(encode(value), character)
+                self.assertEqual(decode(character), value)
 
     def test_round_trip(self):
         for value in (0, 1, 61, 62, 3843, 10**30):
