@@ -40,6 +40,9 @@
 
 외부 라이브러리는 쓰지 않습니다. Python 표준 모듈만으로 충분합니다.
 
+`make experiment`는 적재율별 탐색 비교 횟수와 이론값을
+`experiments/probe_results.csv`에 기록하고, `experiments/probe_results.svg` 그래프를 만듭니다.
+
 ## 로컬에서 하기
 
 ```sh
