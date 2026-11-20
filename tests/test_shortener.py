@@ -27,6 +27,23 @@ class ShortenerTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             Shortener(table_type="unknown")
 
+    def test_linear_table_shortens_expands_and_reuses_duplicate_url(self):
+        shortener = Shortener(table_type="linear", capacity=5)
+
+        code = shortener.shorten("https://example.com")
+
+        self.assertEqual(code, "0")
+        self.assertEqual(shortener.expand(code), "https://example.com")
+        self.assertEqual(shortener.shorten("https://example.com"), code)
+
+    def test_both_table_types_reject_overflow(self):
+        for table_type in ("chaining", "linear"):
+            with self.subTest(table_type=table_type):
+                shortener = Shortener(table_type=table_type, capacity=1)
+                shortener.shorten("https://example.com")
+                with self.assertRaises(OverflowError):
+                    shortener.shorten("https://example.org")
+
 
 if __name__ == "__main__":
     unittest.main()

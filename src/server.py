@@ -5,18 +5,20 @@ import html
 from http.server import BaseHTTPRequestHandler, HTTPServer
 from urllib.parse import parse_qs, unquote, urlsplit
 
-from src.hash_table import HashTable
+from src.hash_table import HashTable, LinearProbingHashTable
 from src.shortener import Shortener
 
+Table = HashTable[str] | LinearProbingHashTable[str]
 
-def _render_hash_steps(table: HashTable[str], key: str) -> str:
+
+def _render_hash_steps(table: Table, key: str) -> str:
     steps = table.hash_steps(key)
     if not steps:
-        return "empty key → bucket 0"
-    parts = ["h₀ = 0"]
+        return "empty key -> bucket 0"
+    parts = ["h0 = 0"]
     for index, (character, previous, codepoint, result) in enumerate(steps, start=1):
         parts.append(
-            f"h{index} = (31 × {previous} + {codepoint} "
+            f"h{index} = (31 * {previous} + {codepoint} "
             f"[{html.escape(character)}]) mod {table.capacity} = {result}"
         )
     return "; ".join(parts)
@@ -24,27 +26,45 @@ def _render_hash_steps(table: HashTable[str], key: str) -> str:
 
 def _render_table(shortener: Shortener) -> str:
     rows = []
+    slot_states = (
+        shortener.table.slot_contents() if shortener.table_type == "linear" else None
+    )
     for index, keys in enumerate(shortener.table.bucket_contents()):
         key_details = []
         for key in keys:
             escaped_key = html.escape(key)
             calculation = _render_hash_steps(shortener.table, key)
-            key_details.append(f"<li><code>{escaped_key}</code><br>{calculation}</li>")
-        contents = "<ul>" + "".join(key_details) + "</ul>" if key_details else "empty"
+            lookup = " -> ".join(
+                f"{position}: {html.escape(inspected)}"
+                for position, inspected in shortener.table.lookup_steps(key)
+            )
+            key_details.append(
+                f"<li><code>{escaped_key}</code><br>{calculation}"
+                f"<br>Inspected positions: {lookup}</li>"
+            )
+        if key_details:
+            contents = "<ul>" + "".join(key_details) + "</ul>"
+        elif slot_states is not None:
+            contents = slot_states[index][0]
+        else:
+            contents = "empty"
         rows.append(f"<tr><th>{index}</th><td>{contents}</td></tr>")
+    position_label = "Slot" if shortener.table_type == "linear" else "Bucket"
     return (
         "<!doctype html><html lang=\"en\"><meta charset=\"utf-8\">"
         "<title>Hash table</title><h1>Hash table</h1>"
         f"<p>Backend: {html.escape(shortener.table_type)}; "
         f"capacity: {shortener.capacity}</p>"
-        "<table><thead><tr><th>Bucket</th><th>Keys and Horner calculation</th>"
-        "</tr></thead><tbody>"
+        f"<table><thead><tr><th>{position_label}</th>"
+        "<th>Keys, lookup path, and Horner calculation</th></tr></thead><tbody>"
         + "".join(rows)
         + "</tbody></table><p><a href=\"/\">Shorten another URL</a></p></html>"
     )
 
 
-def create_server(host: str, port: int, shortener: Shortener | None = None) -> HTTPServer:
+def create_server(
+    host: str, port: int, shortener: Shortener | None = None
+) -> HTTPServer:
     active_shortener = shortener or Shortener()
 
     class Handler(BaseHTTPRequestHandler):
@@ -126,7 +146,7 @@ def create_server(host: str, port: int, shortener: Shortener | None = None) -> H
                 f"<p>Original URL: <a href=\"{escaped_url}\">{escaped_url}</a></p>"
                 f"<p>Short code: <code>{escaped_code}</code></p>"
                 f"<p>Local link: <a href=\"/{escaped_code}\">/{escaped_code}</a></p>"
-                "<p><a href=\"/\">Shorten another URL</a> · "
+                "<p><a href=\"/\">Shorten another URL</a> | "
                 "<a href=\"/table\">Inspect hash table</a></p></html>",
             )
 
@@ -137,7 +157,9 @@ def main() -> None:
     parser = argparse.ArgumentParser(description="Run the URL shortener web server")
     parser.add_argument("--host", default="127.0.0.1")
     parser.add_argument("--port", type=int, default=8000)
-    parser.add_argument("--table-type", choices=("chaining", "linear"), default="chaining")
+    parser.add_argument(
+        "--table-type", choices=("chaining", "linear"), default="chaining"
+    )
     arguments = parser.parse_args()
 
     server = create_server(

@@ -2,18 +2,22 @@
 
 from urllib.parse import urlsplit
 
-from src.hash_table import HashTable
 from src.base62 import encode
+from src.hash_table import HashTable, LinearProbingHashTable
+
+
+Table = HashTable[str] | LinearProbingHashTable[str]
 
 
 class Shortener:
     def __init__(self, table_type: str = "chaining", capacity: int = 101) -> None:
-        if table_type != "chaining":
-            raise ValueError("table_type must be 'chaining'")
+        if table_type not in ("chaining", "linear"):
+            raise ValueError("table_type must be 'chaining' or 'linear'")
         self.table_type = table_type
         self.capacity = capacity
-        self._url_to_code: HashTable[str] = HashTable(capacity)
-        self._code_to_url: HashTable[str] = HashTable(capacity)
+        table_class = HashTable if table_type == "chaining" else LinearProbingHashTable
+        self._url_to_code: Table = table_class(capacity)
+        self._code_to_url: Table = table_class(capacity)
         self._next_id = 0
 
     @staticmethod
@@ -39,15 +43,17 @@ class Shortener:
         if found:
             return self._url_to_code.get(normalized)
 
+        if len(self._url_to_code) >= self.capacity:
+            raise OverflowError("shortener table is full")
         code = encode(self._next_id)
-        self._next_id += 1
         self._url_to_code.set(normalized, code)
         self._code_to_url.set(code, normalized)
+        self._next_id += 1
         return code
 
     def expand(self, code: str) -> str:
         return self._code_to_url.get(code)
 
     @property
-    def table(self) -> HashTable[str]:
+    def table(self) -> Table:
         return self._url_to_code
