@@ -36,12 +36,17 @@
 | 테스트 | `make test` |
 | 웹 서버 (포트 8000) | `make serve` |
 | 충돌 실험 | `make experiment` |
+| 체이닝·선형 탐지 비교 | `make compare-experiment` |
 | 놓친 단계 따라잡기 | `sh tools/catchup.sh <단계 번호>` |
 
 외부 라이브러리는 쓰지 않습니다. Python 표준 모듈만으로 충분합니다.
 
 `make experiment`는 적재율별 탐색 비교 횟수와 이론값을
 `experiments/probe_results.csv`에 기록하고, `experiments/probe_results.svg` 그래프를 만듭니다.
+`make compare-experiment`는 두 해시 테이블을 같은 키·용량으로 적재율 0.1~0.9에서
+비교합니다. 결과 표와 그래프는 `experiments/compare_results.csv`,
+`experiments/compare_results.svg`에 있고, 2쪽 이내 요약은
+`experiments/linear_vs_chaining_report.pdf`에 있습니다.
 
 `make serve`는 로컬 전용(`127.0.0.1:8000`)으로 실행합니다. 입력 폼에서 URL을
 제출하면 단축 코드를 돌려주고, `/table`에서 해시 테이블과 Horner 계산을

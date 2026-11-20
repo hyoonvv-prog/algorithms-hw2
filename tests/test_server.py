@@ -3,6 +3,7 @@ import threading
 import unittest
 
 from src.server import create_server
+from src.shortener import Shortener
 
 
 class ServerTests(unittest.TestCase):
@@ -72,6 +73,36 @@ class ServerTests(unittest.TestCase):
         self.assertIn("Bucket", body)
         self.assertIn("Horner", body)
         self.assertIn("https://example.com", body)
+
+    def test_linear_table_page_shows_inspected_slots(self):
+        server = create_server(
+            "127.0.0.1", 0, Shortener(table_type="linear", capacity=7)
+        )
+        thread = threading.Thread(target=server.serve_forever)
+        thread.start()
+        connection = http.client.HTTPConnection("127.0.0.1", server.server_port)
+        try:
+            connection.request(
+                "POST",
+                "/",
+                "url=https%3A%2F%2Fexample.com",
+                {"Content-Type": "application/x-www-form-urlencoded"},
+            )
+            response = connection.getresponse()
+            response.read()
+            connection.request("GET", "/table")
+            response = connection.getresponse()
+            body = response.read().decode()
+
+            self.assertEqual(response.status, 200)
+            self.assertIn("Backend: linear", body)
+            self.assertIn("Inspected positions:", body)
+            self.assertIn("Horner", body)
+        finally:
+            connection.close()
+            server.shutdown()
+            thread.join()
+            server.server_close()
 
     def test_unknown_code_returns_not_found(self):
         status, _, body = self.request("GET", "/missing")
