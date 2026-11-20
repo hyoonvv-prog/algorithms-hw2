@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="520" viewBox="0 0 900 520">
+<rect width="100%" height="100%" fill="white"/>
+<text x="450" y="28" text-anchor="middle" font-family="sans-serif" font-size="18">Separate chaining: lookup comparisons by load factor</text>
+<line x1="78" y1="448.00" x2="872" y2="448.00" stroke="#e5e7eb"/>
+<text x="66" y="452.00" text-anchor="end" font-family="sans-serif" font-size="12">0</text>
+<line x1="78" y1="369.20" x2="872" y2="369.20" stroke="#e5e7eb"/>
+<text x="66" y="373.20" text-anchor="end" font-family="sans-serif" font-size="12">1</text>
+<line x1="78" y1="290.40" x2="872" y2="290.40" stroke="#e5e7eb"/>
+<text x="66" y="294.40" text-anchor="end" font-family="sans-serif" font-size="12">2</text>
+<line x1="78" y1="211.60" x2="872" y2="211.60" stroke="#e5e7eb"/>
+<text x="66" y="215.60" text-anchor="end" font-family="sans-serif" font-size="12">3</text>
+<line x1="78" y1="132.80" x2="872" y2="132.80" stroke="#e5e7eb"/>
+<text x="66" y="136.80" text-anchor="end" font-family="sans-serif" font-size="12">4</text>
+<line x1="78" y1="54.00" x2="872" y2="54.00" stroke="#e5e7eb"/>
+<text x="66" y="58.00" text-anchor="end" font-family="sans-serif" font-size="12">5</text>
+<line x1="78.00" y1="54" x2="78.00" y2="448" stroke="#f3f4f6"/>
+<text x="78.00" y="470" text-anchor="middle" font-family="sans-serif" font-size="12">0</text>
+<line x1="276.50" y1="54" x2="276.50" y2="448" stroke="#f3f4f6"/>
+<text x="276.50" y="470" text-anchor="middle" font-family="sans-serif" font-size="12">1</text>
+<line x1="475.00" y1="54" x2="475.00" y2="448" stroke="#f3f4f6"/>
+<text x="475.00" y="470" text-anchor="middle" font-family="sans-serif" font-size="12">2</text>
+<line x1="673.50" y1="54" x2="673.50" y2="448" stroke="#f3f4f6"/>
+<text x="673.50" y="470" text-anchor="middle" font-family="sans-serif" font-size="12">3</text>
+<line x1="872.00" y1="54" x2="872.00" y2="448" stroke="#f3f4f6"/>
+<text x="872.00" y="470" text-anchor="middle" font-family="sans-serif" font-size="12">4</text>
+<line x1="78" y1="54" x2="78" y2="448" stroke="#111827"/>
+<line x1="78" y1="448" x2="872" y2="448" stroke="#111827"/>
+<text x="475.0" y="502" text-anchor="middle" font-family="sans-serif" font-size="14">Load factor (items / buckets)</text>
+<text x="20" y="251.0" text-anchor="middle" transform="rotate(-90 20 251.0)" font-family="sans-serif" font-size="14">Average key comparisons</text>
+<polyline points="127.58,359.51 177.15,348.87 226.92,337.66 276.50,327.89 326.08,320.15 375.85,310.85 425.42,300.75 475.00,291.81 524.58,281.86 574.15,272.18 623.92,262.40 673.50,253.10 723.08,243.18 772.85,233.87 822.42,223.28 872.00,212.87" fill="none" stroke="#2563eb" stroke-width="2.5"/>
+<line x1="88" y1="70" x2="112" y2="70" stroke="#2563eb" stroke-width="3"/>
+<text x="120" y="74" font-family="sans-serif" font-size="12">Successful measured</text>
+<polyline points="127.58,359.36 177.15,349.52 226.92,339.64 276.50,329.80 326.08,319.96 375.85,310.08 425.42,300.24 475.00,290.40 524.58,280.56 574.15,270.72 623.92,260.84 673.50,251.00 723.08,241.16 772.85,231.28 822.42,221.44 872.00,211.60" fill="none" stroke="#93c5fd" stroke-width="2.5"/>
+<line x1="463" y1="70" x2="487" y2="70" stroke="#93c5fd" stroke-width="3"/>
+<text x="495" y="74" font-family="sans-serif" font-size="12">Successful theory (1 + α/2)</text>
+<polyline points="127.58,430.49 177.15,408.91 226.92,388.15 276.50,366.94 326.08,347.70 375.85,327.56 425.42,309.85 475.00,291.22 524.58,270.40 574.15,251.37 623.92,231.02 673.50,211.05 723.08,191.20 772.85,172.36 822.42,153.79 872.00,133.27" fill="none" stroke="#dc2626" stroke-width="2.5"/>
+<line x1="88" y1="94" x2="112" y2="94" stroke="#dc2626" stroke-width="3"/>
+<text x="120" y="98" font-family="sans-serif" font-size="12">Unsuccessful measured</text>
+<polyline points="127.58,428.32 177.15,408.64 226.92,388.88 276.50,369.20 326.08,349.52 375.85,329.76 425.42,310.08 475.00,290.40 524.58,270.72 574.15,251.04 623.92,231.28 673.50,211.60 723.08,191.92 772.85,172.16 822.42,152.48 872.00,132.80" fill="none" stroke="#fca5a5" stroke-width="2.5"/>
+<line x1="463" y1="94" x2="487" y2="94" stroke="#fca5a5" stroke-width="3"/>
+<text x="495" y="98" font-family="sans-serif" font-size="12">Unsuccessful theory (α)</text>
+</svg>
