@@ -48,6 +48,36 @@ class ServerTests(unittest.TestCase):
         self.assertEqual(status, 302)
         self.assertEqual(headers["Location"], "https://example.com/page")
 
+    def test_result_link_uses_host_header_when_forwarded_host_is_absent(self):
+        status, _, result = self.request(
+            "POST",
+            "/",
+            "url=https%3A%2F%2Fexample.com",
+            {
+                "Content-Type": "application/x-www-form-urlencoded",
+                "Host": "short.example:8000",
+            },
+        )
+
+        self.assertEqual(status, 200)
+        self.assertIn('href="//short.example:8000/0"', result)
+
+    def test_result_link_prefers_forwarded_host(self):
+        status, _, result = self.request(
+            "POST",
+            "/",
+            "url=https%3A%2F%2Fexample.com",
+            {
+                "Content-Type": "application/x-www-form-urlencoded",
+                "Host": "internal.example:8000",
+                "X-Forwarded-Host": "public.example",
+            },
+        )
+
+        self.assertEqual(status, 200)
+        self.assertIn('href="//public.example/0"', result)
+        self.assertNotIn("//internal.example:8000/0", result)
+
     def test_invalid_url_is_shown_as_client_error(self):
         status, _, body = self.request(
             "POST",
