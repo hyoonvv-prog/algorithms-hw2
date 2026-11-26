@@ -35,7 +35,31 @@ class Shortener:
             raise ValueError("url must be a valid HTTP or HTTPS URL") from error
         if parts.scheme.lower() not in ("http", "https") or not hostname:
             raise ValueError("url must be a valid HTTP or HTTPS URL")
-        return normalized
+
+        scheme_end = normalized.find(":")
+        authority_start = scheme_end + 3
+        authority_end = len(normalized)
+        for delimiter in "/?#":
+            position = normalized.find(delimiter, authority_start)
+            if position != -1 and position < authority_end:
+                authority_end = position
+        authority = normalized[authority_start:authority_end]
+        userinfo, separator, host_port = authority.rpartition("@")
+        host_start = len(userinfo) + len(separator)
+        if host_port.startswith("["):
+            host_end = authority_start + host_start + host_port.find("]") + 1
+            host_start += 1
+        else:
+            colon = host_port.find(":")
+            host_length = colon if colon != -1 else len(host_port)
+            host_end = authority_start + host_start + host_length
+        host = normalized[authority_start + host_start:host_end]
+        return (
+            normalized[:scheme_end].lower()
+            + normalized[scheme_end:authority_start + host_start]
+            + host.lower()
+            + normalized[host_end:]
+        )
 
     def shorten(self, url: str) -> str:
         normalized = self._normalize_url(url)
