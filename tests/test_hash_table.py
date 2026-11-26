@@ -71,6 +71,35 @@ class HashTableTests(unittest.TestCase):
                 with self.assertRaises(TypeError):
                     table.get(1)
 
+    def test_default_max_load_allows_load_one_but_rejects_overflow(self):
+        table = HashTable(capacity=2)
+        table.set("first", 1)
+        table.set("second", 2)
+
+        with self.assertRaises(OverflowError):
+            table.set("third", 3)
+
+        self.assertEqual(len(table), 2)
+
+    def test_max_load_boundary_and_existing_key_update(self):
+        table = HashTable(capacity=4, max_load=0.5)
+        table.set("first", 1)
+        table.set("second", 2)
+        table.set("first", 10)
+
+        self.assertEqual(table.get("first"), 10)
+        self.assertEqual(len(table), 2)
+        with self.assertRaises(OverflowError):
+            table.set("third", 3)
+
+    def test_none_max_load_has_no_limit(self):
+        table = HashTable(capacity=1, max_load=None)
+        for key in ("first", "second", "third"):
+            table.set(key, key)
+
+        self.assertEqual(len(table), 3)
+        self.assertEqual(table.get("third"), "third")
+
 
 if __name__ == "__main__":
     unittest.main()

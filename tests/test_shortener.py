@@ -19,6 +19,20 @@ class ShortenerTests(unittest.TestCase):
             with self.subTest(url=url), self.assertRaises(ValueError):
                 shortener.shorten(url)
 
+    def test_scheme_and_host_case_variants_reuse_the_same_code(self):
+        shortener = Shortener()
+        code = shortener.shorten("HTTPS://Example.COM/Path")
+
+        self.assertEqual(shortener.shorten("https://example.com/Path"), code)
+
+    def test_path_case_variants_receive_different_codes(self):
+        shortener = Shortener()
+
+        upper_path_code = shortener.shorten("https://example.com/Path")
+        lower_path_code = shortener.shorten("https://example.com/path")
+
+        self.assertNotEqual(upper_path_code, lower_path_code)
+
     def test_unknown_code_raises_key_error(self):
         with self.assertRaises(KeyError):
             Shortener().expand("not-found")
