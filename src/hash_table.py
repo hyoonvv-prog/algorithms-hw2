@@ -26,12 +26,13 @@ class _Node(Generic[Value]):
 
 
 class HashTable(Generic[Value]):
-    def __init__(self, capacity: int = 101) -> None:
+    def __init__(self, capacity: int = 101, max_load: float | None = 1.0) -> None:
         if type(capacity) is not int:
             raise TypeError("capacity must be an integer")
         if capacity <= 0:
             raise ValueError("capacity must be positive")
         self.capacity = capacity
+        self.max_load = max_load
         self._buckets: list[_Node[Value] | None] = [None] * capacity
         self._size = 0
 
@@ -69,20 +70,26 @@ class HashTable(Generic[Value]):
         self._validate_key(key)
         index = self._index(key)
         node = self._buckets[index]
-        if node is None:
-            self._buckets[index] = _Node(key, value)
-            self._size += 1
-            return
-
-        while True:
+        previous = None
+        while node is not None:
             if node.key == key:
                 node.value = value
                 return
-            if node.next is None:
-                node.next = _Node(key, value)
-                self._size += 1
-                return
+            previous = node
             node = node.next
+
+        if (
+            self.max_load is not None
+            and (self._size + 1) / self.capacity > self.max_load
+        ):
+            raise OverflowError("hash table max_load exceeded")
+
+        new_node = _Node(key, value)
+        if previous is None:
+            self._buckets[index] = new_node
+        else:
+            previous.next = new_node
+        self._size += 1
 
     def get(self, key: str) -> Value:
         node, _ = self._find_node(key)
