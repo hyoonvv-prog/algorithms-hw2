@@ -139,13 +139,19 @@ def create_server(
                 return
             escaped_url = html.escape(active_shortener.expand(code))
             escaped_code = html.escape(code)
+            host = self.headers.get("X-Forwarded-Host") or self.headers.get("Host")
+            short_link = (
+                f"//{html.escape(host)}/{escaped_code}"
+                if host
+                else f"/{escaped_code}"
+            )
             self._send_html(
                 200,
                 "<!doctype html><html lang=\"en\"><meta charset=\"utf-8\">"
                 "<title>Short URL created</title><h1>Short URL created</h1>"
                 f"<p>Original URL: <a href=\"{escaped_url}\">{escaped_url}</a></p>"
                 f"<p>Short code: <code>{escaped_code}</code></p>"
-                f"<p>Local link: <a href=\"/{escaped_code}\">/{escaped_code}</a></p>"
+                f"<p>Short link: <a href=\"{short_link}\">{short_link}</a></p>"
                 "<p><a href=\"/\">Shorten another URL</a> | "
                 "<a href=\"/table\">Inspect hash table</a></p></html>",
             )
