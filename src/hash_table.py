@@ -162,12 +162,15 @@ _DELETED = object()
 class LinearProbingHashTable(Generic[Value]):
     """A fixed-capacity hash table that resolves collisions by linear probing."""
 
-    def __init__(self, capacity: int = 101) -> None:
+    def __init__(
+        self, capacity: int = 101, max_load: float | None = 1.0
+    ) -> None:
         if type(capacity) is not int:
             raise TypeError("capacity must be an integer")
         if capacity <= 0:
             raise ValueError("capacity must be positive")
         self.capacity = capacity
+        self.max_load = max_load
         self._slots: list[_Entry[Value] | object | None] = [None] * capacity
         self._size = 0
 
@@ -224,6 +227,11 @@ class LinearProbingHashTable(Generic[Value]):
             index = (start + offset) % self.capacity
             slot = self._slots[index]
             if slot is None:
+                if (
+                    self.max_load is not None
+                    and (self._size + 1) / self.capacity > self.max_load
+                ):
+                    raise OverflowError("hash table max_load exceeded")
                 target = first_deleted if first_deleted is not None else index
                 self._slots[target] = _Entry(key, value)
                 self._size += 1
@@ -238,6 +246,11 @@ class LinearProbingHashTable(Generic[Value]):
                 slot.value = value
                 return
         if first_deleted is not None:
+            if (
+                self.max_load is not None
+                and (self._size + 1) / self.capacity > self.max_load
+            ):
+                raise OverflowError("hash table max_load exceeded")
             self._slots[first_deleted] = _Entry(key, value)
             self._size += 1
             return

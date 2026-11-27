@@ -72,33 +72,48 @@ class HashTableTests(unittest.TestCase):
                     table.get(1)
 
     def test_default_max_load_allows_load_one_but_rejects_overflow(self):
-        table = HashTable(capacity=2)
-        table.set("first", 1)
-        table.set("second", 2)
+        for table_type in TABLE_TYPES:
+            with self.subTest(table_type=table_type.__name__):
+                table = table_type(capacity=2)
+                table.set("first", 1)
+                table.set("second", 2)
 
-        with self.assertRaises(OverflowError):
-            table.set("third", 3)
+                with self.assertRaises(OverflowError):
+                    table.set("third", 3)
 
-        self.assertEqual(len(table), 2)
+                self.assertEqual(len(table), 2)
 
     def test_max_load_boundary_and_existing_key_update(self):
-        table = HashTable(capacity=4, max_load=0.5)
-        table.set("first", 1)
-        table.set("second", 2)
-        table.set("first", 10)
+        for table_type in TABLE_TYPES:
+            with self.subTest(table_type=table_type.__name__):
+                table = table_type(capacity=4, max_load=0.5)
+                table.set("first", 1)
+                table.set("second", 2)
+                table.set("first", 10)
 
-        self.assertEqual(table.get("first"), 10)
-        self.assertEqual(len(table), 2)
-        with self.assertRaises(OverflowError):
-            table.set("third", 3)
+                self.assertEqual(table.get("first"), 10)
+                self.assertEqual(len(table), 2)
+                with self.assertRaises(OverflowError):
+                    table.set("third", 3)
 
     def test_none_max_load_has_no_limit(self):
-        table = HashTable(capacity=1, max_load=None)
-        for key in ("first", "second", "third"):
-            table.set(key, key)
+        with self.subTest(table_type=HashTable.__name__):
+            table = HashTable(capacity=1, max_load=None)
+            for key in ("first", "second", "third"):
+                table.set(key, key)
 
-        self.assertEqual(len(table), 3)
-        self.assertEqual(table.get("third"), "third")
+            self.assertEqual(len(table), 3)
+            self.assertEqual(table.get("third"), "third")
+
+        with self.subTest(table_type=LinearProbingHashTable.__name__):
+            table = LinearProbingHashTable(capacity=3, max_load=None)
+            for key in ("first", "second", "third"):
+                table.set(key, key)
+
+            self.assertEqual(len(table), 3)
+            self.assertEqual(table.get("third"), "third")
+            with self.assertRaises(OverflowError):
+                table.set("fourth", "fourth")
 
 
 if __name__ == "__main__":

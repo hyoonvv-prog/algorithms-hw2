@@ -35,6 +35,7 @@ URL 데이터는 프로세스 메모리에 보관하며, 서버를 재시작하�
 - 적재율은 키 개수를 칸 수로 나눈 값으로 한다. `max_load` 기본값은 1.0으로 한다.
 - 새 키를 넣었을 때 적재율이 `max_load`를 넘으면 `OverflowError`를 낸다. 이미 있는 키의 값을 갱신할 때는 키 개수가 늘지 않으므로 오류를 내지 않는다.
 - max_load=None이면 한도는 없다.
+- 선형 탐지 테이블에서 `max_load=None`이면 적재율 한도는 없지만, 칸이 가득 차면 `OverflowError`를 낸다.
 - 해시 테이블 구현은 Python 내장 `dict`, `set`, `hash()`에 의존하지 않는다.
 - 공개 동작은 `set(key, value)`, `get(key)`, `delete(key)`, `len(table)`이다.
   없는 키의 조회와 삭제는 `KeyError`를 낸다.
