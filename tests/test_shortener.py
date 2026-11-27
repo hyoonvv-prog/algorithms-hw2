@@ -1,5 +1,6 @@
 import unittest
 
+from src.base62 import decode
 from src.shortener import Shortener
 
 
@@ -24,6 +25,15 @@ class ShortenerTests(unittest.TestCase):
         code = shortener.shorten("HTTPS://Example.COM/Path")
 
         self.assertEqual(shortener.shorten("https://example.com/Path"), code)
+
+    def test_reserved_table_path_is_skipped_when_issuing_codes(self):
+        shortener = Shortener()
+        shortener._next_id = decode("table")
+
+        code = shortener.shorten("https://example.com")
+
+        self.assertNotEqual(code, "table")
+        self.assertEqual(shortener.expand(code), "https://example.com")
 
     def test_path_case_variants_receive_different_codes(self):
         shortener = Shortener()

@@ -38,12 +38,23 @@ def _render_table(shortener: Shortener) -> str:
                 f"{position}: {html.escape(inspected)}"
                 for position, inspected in shortener.table.lookup_steps(key)
             )
-            key_details.append(
-                f"<li><code>{escaped_key}</code><br>{calculation}"
-                f"<br>Inspected positions: {lookup}</li>"
-            )
+            if shortener.table_type == "linear":
+                key_details.append(
+                    f"<li><code>{escaped_key}</code><br>{calculation}"
+                    f"<br>Inspected positions: {lookup}</li>"
+                )
+            else:
+                key_details.append(
+                    f"<span><code>{escaped_key}</code> "
+                    "<details><summary>Horner calculation</summary>"
+                    f"<p>{calculation}</p><p>Inspected positions: {lookup}</p>"
+                    "</details></span>"
+                )
         if key_details:
-            contents = "<ul>" + "".join(key_details) + "</ul>"
+            if shortener.table_type == "linear":
+                contents = "<ul>" + "".join(key_details) + "</ul>"
+            else:
+                contents = " → ".join(key_details)
         elif slot_states is not None:
             contents = slot_states[index][0]
         else:

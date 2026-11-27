@@ -70,6 +70,9 @@ class Shortener:
         if len(self._url_to_code) >= self.capacity:
             raise OverflowError("shortener table is full")
         code = encode(self._next_id)
+        while code == "table":
+            self._next_id += 1
+            code = encode(self._next_id)
         self._url_to_code.set(normalized, code)
         self._code_to_url.set(code, normalized)
         self._next_id += 1

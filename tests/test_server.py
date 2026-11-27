@@ -104,6 +104,41 @@ class ServerTests(unittest.TestCase):
         self.assertIn("Horner", body)
         self.assertIn("https://example.com", body)
 
+    def test_chaining_table_shows_linked_nodes_with_collapsible_hash_steps(self):
+        server = create_server(
+            "127.0.0.1", 0, Shortener(table_type="chaining", capacity=2)
+        )
+        thread = threading.Thread(target=server.serve_forever)
+        thread.start()
+        connection = http.client.HTTPConnection("127.0.0.1", server.server_port)
+        try:
+            for url in ("https://example.com/a", "https://example.com/c"):
+                connection.request(
+                    "POST",
+                    "/",
+                    "url=" + url.replace(":", "%3A").replace("/", "%2F"),
+                    {"Content-Type": "application/x-www-form-urlencoded"},
+                )
+                response = connection.getresponse()
+                response.read()
+
+            connection.request("GET", "/table")
+            response = connection.getresponse()
+            body = response.read().decode()
+
+            self.assertEqual(response.status, 200)
+            self.assertIn("https://example.com/a</code>", body)
+            self.assertIn("→", body)
+            self.assertIn("<details>", body)
+            self.assertIn("<summary>Horner calculation</summary>", body)
+            self.assertNotIn("<details open", body)
+            self.assertEqual(body.count("<details>"), 2)
+        finally:
+            connection.close()
+            server.shutdown()
+            thread.join()
+            server.server_close()
+
     def test_linear_table_page_shows_inspected_slots(self):
         server = create_server(
             "127.0.0.1", 0, Shortener(table_type="linear", capacity=7)
@@ -128,6 +163,8 @@ class ServerTests(unittest.TestCase):
             self.assertIn("Backend: linear", body)
             self.assertIn("Inspected positions:", body)
             self.assertIn("Horner", body)
+            self.assertNotIn("<details", body)
+            self.assertNotIn("→", body)
         finally:
             connection.close()
             server.shutdown()
