@@ -1,0 +1,204 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="760" viewBox="0 0 1000 760">
+<rect width="100%" height="100%" fill="white"/>
+<text x="500" y="28" text-anchor="middle" font-family="sans-serif" font-size="19">Measured and theoretical lookup probes by load factor</text>
+<text x="297.0" y="76" text-anchor="middle" font-family="sans-serif" font-size="15">Chaining: successful</text>
+<line x1="124" y1="306.00" x2="484" y2="306.00" stroke="#e5e7eb"/>
+<text x="116" y="310.00" text-anchor="end" font-family="sans-serif" font-size="10">0</text>
+<line x1="124" y1="201.00" x2="484" y2="201.00" stroke="#e5e7eb"/>
+<text x="116" y="205.00" text-anchor="end" font-family="sans-serif" font-size="10">1</text>
+<line x1="124" y1="96.00" x2="484" y2="96.00" stroke="#e5e7eb"/>
+<text x="116" y="100.00" text-anchor="end" font-family="sans-serif" font-size="10">2</text>
+<text x="124.00" y="323" text-anchor="middle" font-family="sans-serif" font-size="10">0.1</text>
+<text x="214.00" y="323" text-anchor="middle" font-family="sans-serif" font-size="10">0.3</text>
+<text x="304.00" y="323" text-anchor="middle" font-family="sans-serif" font-size="10">0.5</text>
+<text x="394.00" y="323" text-anchor="middle" font-family="sans-serif" font-size="10">0.7</text>
+<text x="484.00" y="323" text-anchor="middle" font-family="sans-serif" font-size="10">0.9</text>
+<polyline points="124.04,196.84 169.09,190.08 214.13,182.63 259.18,176.83 303.78,173.92 348.82,167.50 393.87,162.03 438.91,156.50 483.96,150.70" fill="none" stroke="#2563eb" stroke-width="2.5"/>
+<polyline points="124.04,195.74 169.09,190.49 214.13,185.23 259.18,179.98 303.78,174.78 348.82,169.52 393.87,164.27 438.91,159.01 483.96,153.76" fill="none" stroke="#2563eb" stroke-width="2.5" stroke-dasharray="6 4"/>
+<line x1="124" y1="96" x2="124" y2="306" stroke="#111827"/>
+<line x1="124" y1="306" x2="484" y2="306" stroke="#111827"/>
+<text x="304.0" y="341" text-anchor="middle" font-family="sans-serif" font-size="11">Load factor</text>
+<line x1="236" y1="108" x2="260" y2="108" stroke="#2563eb" stroke-width="2.5"/>
+<text x="266" y="112" font-family="sans-serif" font-size="11">measured</text>
+<line x1="359" y1="108" x2="383" y2="108" stroke="#2563eb" stroke-width="2.5" stroke-dasharray="6 4"/>
+<text x="389" y="112" font-family="sans-serif" font-size="11">theory</text>
+<text x="779.0" y="76" text-anchor="middle" font-family="sans-serif" font-size="15">Chaining: unsuccessful</text>
+<line x1="606" y1="306.00" x2="966" y2="306.00" stroke="#e5e7eb"/>
+<text x="598" y="310.00" text-anchor="end" font-family="sans-serif" font-size="10">0</text>
+<line x1="606" y1="96.00" x2="966" y2="96.00" stroke="#e5e7eb"/>
+<text x="598" y="100.00" text-anchor="end" font-family="sans-serif" font-size="10">1</text>
+<text x="606.00" y="323" text-anchor="middle" font-family="sans-serif" font-size="10">0.1</text>
+<text x="696.00" y="323" text-anchor="middle" font-family="sans-serif" font-size="10">0.3</text>
+<text x="786.00" y="323" text-anchor="middle" font-family="sans-serif" font-size="10">0.5</text>
+<text x="876.00" y="323" text-anchor="middle" font-family="sans-serif" font-size="10">0.7</text>
+<text x="966.00" y="323" text-anchor="middle" font-family="sans-serif" font-size="10">0.9</text>
+<polyline points="606.04,295.60 651.09,273.77 696.13,254.71 741.18,227.51 785.78,201.83 830.82,183.12 875.87,167.09 920.91,142.58 965.96,118.90" fill="none" stroke="#dc2626" stroke-width="2.5"/>
+<polyline points="606.04,284.98 651.09,263.96 696.13,242.94 741.18,221.92 785.78,201.10 830.82,180.08 875.87,159.06 920.91,138.04 965.96,117.02" fill="none" stroke="#dc2626" stroke-width="2.5" stroke-dasharray="6 4"/>
+<line x1="606" y1="96" x2="606" y2="306" stroke="#111827"/>
+<line x1="606" y1="306" x2="966" y2="306" stroke="#111827"/>
+<text x="786.0" y="341" text-anchor="middle" font-family="sans-serif" font-size="11">Load factor</text>
+<line x1="718" y1="108" x2="742" y2="108" stroke="#dc2626" stroke-width="2.5"/>
+<text x="748" y="112" font-family="sans-serif" font-size="11">measured</text>
+<line x1="841" y1="108" x2="865" y2="108" stroke="#dc2626" stroke-width="2.5" stroke-dasharray="6 4"/>
+<text x="871" y="112" font-family="sans-serif" font-size="11">theory</text>
+<text x="297.0" y="430" text-anchor="middle" font-family="sans-serif" font-size="15">Linear probing: successful</text>
+<line x1="124" y1="660.00" x2="484" y2="660.00" stroke="#e5e7eb"/>
+<text x="116" y="664.00" text-anchor="end" font-family="sans-serif" font-size="10">0</text>
+<line x1="124" y1="630.00" x2="484" y2="630.00" stroke="#e5e7eb"/>
+<text x="116" y="634.00" text-anchor="end" font-family="sans-serif" font-size="10">1</text>
+<line x1="124" y1="600.00" x2="484" y2="600.00" stroke="#e5e7eb"/>
+<text x="116" y="604.00" text-anchor="end" font-family="sans-serif" font-size="10">2</text>
+<line x1="124" y1="570.00" x2="484" y2="570.00" stroke="#e5e7eb"/>
+<text x="116" y="574.00" text-anchor="end" font-family="sans-serif" font-size="10">3</text>
+<line x1="124" y1="540.00" x2="484" y2="540.00" stroke="#e5e7eb"/>
+<text x="116" y="544.00" text-anchor="end" font-family="sans-serif" font-size="10">4</text>
+<line x1="124" y1="510.00" x2="484" y2="510.00" stroke="#e5e7eb"/>
+<text x="116" y="514.00" text-anchor="end" font-family="sans-serif" font-size="10">5</text>
+<line x1="124" y1="480.00" x2="484" y2="480.00" stroke="#e5e7eb"/>
+<text x="116" y="484.00" text-anchor="end" font-family="sans-serif" font-size="10">6</text>
+<line x1="124" y1="450.00" x2="484" y2="450.00" stroke="#e5e7eb"/>
+<text x="116" y="454.00" text-anchor="end" font-family="sans-serif" font-size="10">7</text>
+<text x="124.00" y="677" text-anchor="middle" font-family="sans-serif" font-size="10">0.1</text>
+<text x="214.00" y="677" text-anchor="middle" font-family="sans-serif" font-size="10">0.3</text>
+<text x="304.00" y="677" text-anchor="middle" font-family="sans-serif" font-size="10">0.5</text>
+<text x="394.00" y="677" text-anchor="middle" font-family="sans-serif" font-size="10">0.7</text>
+<text x="484.00" y="677" text-anchor="middle" font-family="sans-serif" font-size="10">0.9</text>
+<polyline points="124.04,628.51 169.09,625.54 214.13,621.19 259.18,617.90 303.78,613.57 348.82,604.26 393.87,590.18 438.91,568.70 483.96,510.63" fill="none" stroke="#059669" stroke-width="2.5"/>
+<polyline points="124.04,628.33 169.09,626.25 214.13,623.56 259.18,619.98 303.78,615.03 348.82,607.54 393.87,595.05 438.91,570.07 483.96,495.15" fill="none" stroke="#059669" stroke-width="2.5" stroke-dasharray="6 4"/>
+<line x1="124" y1="450" x2="124" y2="660" stroke="#111827"/>
+<line x1="124" y1="660" x2="484" y2="660" stroke="#111827"/>
+<text x="304.0" y="695" text-anchor="middle" font-family="sans-serif" font-size="11">Load factor</text>
+<line x1="236" y1="462" x2="260" y2="462" stroke="#059669" stroke-width="2.5"/>
+<text x="266" y="466" font-family="sans-serif" font-size="11">measured</text>
+<line x1="359" y1="462" x2="383" y2="462" stroke="#059669" stroke-width="2.5" stroke-dasharray="6 4"/>
+<text x="389" y="466" font-family="sans-serif" font-size="11">theory</text>
+<text x="779.0" y="430" text-anchor="middle" font-family="sans-serif" font-size="15">Linear probing: unsuccessful</text>
+<line x1="606" y1="660.00" x2="966" y2="660.00" stroke="#e5e7eb"/>
+<text x="598" y="664.00" text-anchor="end" font-family="sans-serif" font-size="10">0</text>
+<line x1="606" y1="656.25" x2="966" y2="656.25" stroke="#e5e7eb"/>
+<text x="598" y="660.25" text-anchor="end" font-family="sans-serif" font-size="10">1</text>
+<line x1="606" y1="652.50" x2="966" y2="652.50" stroke="#e5e7eb"/>
+<text x="598" y="656.50" text-anchor="end" font-family="sans-serif" font-size="10">2</text>
+<line x1="606" y1="648.75" x2="966" y2="648.75" stroke="#e5e7eb"/>
+<text x="598" y="652.75" text-anchor="end" font-family="sans-serif" font-size="10">3</text>
+<line x1="606" y1="645.00" x2="966" y2="645.00" stroke="#e5e7eb"/>
+<text x="598" y="649.00" text-anchor="end" font-family="sans-serif" font-size="10">4</text>
+<line x1="606" y1="641.25" x2="966" y2="641.25" stroke="#e5e7eb"/>
+<text x="598" y="645.25" text-anchor="end" font-family="sans-serif" font-size="10">5</text>
+<line x1="606" y1="637.50" x2="966" y2="637.50" stroke="#e5e7eb"/>
+<text x="598" y="641.50" text-anchor="end" font-family="sans-serif" font-size="10">6</text>
+<line x1="606" y1="633.75" x2="966" y2="633.75" stroke="#e5e7eb"/>
+<text x="598" y="637.75" text-anchor="end" font-family="sans-serif" font-size="10">7</text>
+<line x1="606" y1="630.00" x2="966" y2="630.00" stroke="#e5e7eb"/>
+<text x="598" y="634.00" text-anchor="end" font-family="sans-serif" font-size="10">8</text>
+<line x1="606" y1="626.25" x2="966" y2="626.25" stroke="#e5e7eb"/>
+<text x="598" y="630.25" text-anchor="end" font-family="sans-serif" font-size="10">9</text>
+<line x1="606" y1="622.50" x2="966" y2="622.50" stroke="#e5e7eb"/>
+<text x="598" y="626.50" text-anchor="end" font-family="sans-serif" font-size="10">10</text>
+<line x1="606" y1="618.75" x2="966" y2="618.75" stroke="#e5e7eb"/>
+<text x="598" y="622.75" text-anchor="end" font-family="sans-serif" font-size="10">11</text>
+<line x1="606" y1="615.00" x2="966" y2="615.00" stroke="#e5e7eb"/>
+<text x="598" y="619.00" text-anchor="end" font-family="sans-serif" font-size="10">12</text>
+<line x1="606" y1="611.25" x2="966" y2="611.25" stroke="#e5e7eb"/>
+<text x="598" y="615.25" text-anchor="end" font-family="sans-serif" font-size="10">13</text>
+<line x1="606" y1="607.50" x2="966" y2="607.50" stroke="#e5e7eb"/>
+<text x="598" y="611.50" text-anchor="end" font-family="sans-serif" font-size="10">14</text>
+<line x1="606" y1="603.75" x2="966" y2="603.75" stroke="#e5e7eb"/>
+<text x="598" y="607.75" text-anchor="end" font-family="sans-serif" font-size="10">15</text>
+<line x1="606" y1="600.00" x2="966" y2="600.00" stroke="#e5e7eb"/>
+<text x="598" y="604.00" text-anchor="end" font-family="sans-serif" font-size="10">16</text>
+<line x1="606" y1="596.25" x2="966" y2="596.25" stroke="#e5e7eb"/>
+<text x="598" y="600.25" text-anchor="end" font-family="sans-serif" font-size="10">17</text>
+<line x1="606" y1="592.50" x2="966" y2="592.50" stroke="#e5e7eb"/>
+<text x="598" y="596.50" text-anchor="end" font-family="sans-serif" font-size="10">18</text>
+<line x1="606" y1="588.75" x2="966" y2="588.75" stroke="#e5e7eb"/>
+<text x="598" y="592.75" text-anchor="end" font-family="sans-serif" font-size="10">19</text>
+<line x1="606" y1="585.00" x2="966" y2="585.00" stroke="#e5e7eb"/>
+<text x="598" y="589.00" text-anchor="end" font-family="sans-serif" font-size="10">20</text>
+<line x1="606" y1="581.25" x2="966" y2="581.25" stroke="#e5e7eb"/>
+<text x="598" y="585.25" text-anchor="end" font-family="sans-serif" font-size="10">21</text>
+<line x1="606" y1="577.50" x2="966" y2="577.50" stroke="#e5e7eb"/>
+<text x="598" y="581.50" text-anchor="end" font-family="sans-serif" font-size="10">22</text>
+<line x1="606" y1="573.75" x2="966" y2="573.75" stroke="#e5e7eb"/>
+<text x="598" y="577.75" text-anchor="end" font-family="sans-serif" font-size="10">23</text>
+<line x1="606" y1="570.00" x2="966" y2="570.00" stroke="#e5e7eb"/>
+<text x="598" y="574.00" text-anchor="end" font-family="sans-serif" font-size="10">24</text>
+<line x1="606" y1="566.25" x2="966" y2="566.25" stroke="#e5e7eb"/>
+<text x="598" y="570.25" text-anchor="end" font-family="sans-serif" font-size="10">25</text>
+<line x1="606" y1="562.50" x2="966" y2="562.50" stroke="#e5e7eb"/>
+<text x="598" y="566.50" text-anchor="end" font-family="sans-serif" font-size="10">26</text>
+<line x1="606" y1="558.75" x2="966" y2="558.75" stroke="#e5e7eb"/>
+<text x="598" y="562.75" text-anchor="end" font-family="sans-serif" font-size="10">27</text>
+<line x1="606" y1="555.00" x2="966" y2="555.00" stroke="#e5e7eb"/>
+<text x="598" y="559.00" text-anchor="end" font-family="sans-serif" font-size="10">28</text>
+<line x1="606" y1="551.25" x2="966" y2="551.25" stroke="#e5e7eb"/>
+<text x="598" y="555.25" text-anchor="end" font-family="sans-serif" font-size="10">29</text>
+<line x1="606" y1="547.50" x2="966" y2="547.50" stroke="#e5e7eb"/>
+<text x="598" y="551.50" text-anchor="end" font-family="sans-serif" font-size="10">30</text>
+<line x1="606" y1="543.75" x2="966" y2="543.75" stroke="#e5e7eb"/>
+<text x="598" y="547.75" text-anchor="end" font-family="sans-serif" font-size="10">31</text>
+<line x1="606" y1="540.00" x2="966" y2="540.00" stroke="#e5e7eb"/>
+<text x="598" y="544.00" text-anchor="end" font-family="sans-serif" font-size="10">32</text>
+<line x1="606" y1="536.25" x2="966" y2="536.25" stroke="#e5e7eb"/>
+<text x="598" y="540.25" text-anchor="end" font-family="sans-serif" font-size="10">33</text>
+<line x1="606" y1="532.50" x2="966" y2="532.50" stroke="#e5e7eb"/>
+<text x="598" y="536.50" text-anchor="end" font-family="sans-serif" font-size="10">34</text>
+<line x1="606" y1="528.75" x2="966" y2="528.75" stroke="#e5e7eb"/>
+<text x="598" y="532.75" text-anchor="end" font-family="sans-serif" font-size="10">35</text>
+<line x1="606" y1="525.00" x2="966" y2="525.00" stroke="#e5e7eb"/>
+<text x="598" y="529.00" text-anchor="end" font-family="sans-serif" font-size="10">36</text>
+<line x1="606" y1="521.25" x2="966" y2="521.25" stroke="#e5e7eb"/>
+<text x="598" y="525.25" text-anchor="end" font-family="sans-serif" font-size="10">37</text>
+<line x1="606" y1="517.50" x2="966" y2="517.50" stroke="#e5e7eb"/>
+<text x="598" y="521.50" text-anchor="end" font-family="sans-serif" font-size="10">38</text>
+<line x1="606" y1="513.75" x2="966" y2="513.75" stroke="#e5e7eb"/>
+<text x="598" y="517.75" text-anchor="end" font-family="sans-serif" font-size="10">39</text>
+<line x1="606" y1="510.00" x2="966" y2="510.00" stroke="#e5e7eb"/>
+<text x="598" y="514.00" text-anchor="end" font-family="sans-serif" font-size="10">40</text>
+<line x1="606" y1="506.25" x2="966" y2="506.25" stroke="#e5e7eb"/>
+<text x="598" y="510.25" text-anchor="end" font-family="sans-serif" font-size="10">41</text>
+<line x1="606" y1="502.50" x2="966" y2="502.50" stroke="#e5e7eb"/>
+<text x="598" y="506.50" text-anchor="end" font-family="sans-serif" font-size="10">42</text>
+<line x1="606" y1="498.75" x2="966" y2="498.75" stroke="#e5e7eb"/>
+<text x="598" y="502.75" text-anchor="end" font-family="sans-serif" font-size="10">43</text>
+<line x1="606" y1="495.00" x2="966" y2="495.00" stroke="#e5e7eb"/>
+<text x="598" y="499.00" text-anchor="end" font-family="sans-serif" font-size="10">44</text>
+<line x1="606" y1="491.25" x2="966" y2="491.25" stroke="#e5e7eb"/>
+<text x="598" y="495.25" text-anchor="end" font-family="sans-serif" font-size="10">45</text>
+<line x1="606" y1="487.50" x2="966" y2="487.50" stroke="#e5e7eb"/>
+<text x="598" y="491.50" text-anchor="end" font-family="sans-serif" font-size="10">46</text>
+<line x1="606" y1="483.75" x2="966" y2="483.75" stroke="#e5e7eb"/>
+<text x="598" y="487.75" text-anchor="end" font-family="sans-serif" font-size="10">47</text>
+<line x1="606" y1="480.00" x2="966" y2="480.00" stroke="#e5e7eb"/>
+<text x="598" y="484.00" text-anchor="end" font-family="sans-serif" font-size="10">48</text>
+<line x1="606" y1="476.25" x2="966" y2="476.25" stroke="#e5e7eb"/>
+<text x="598" y="480.25" text-anchor="end" font-family="sans-serif" font-size="10">49</text>
+<line x1="606" y1="472.50" x2="966" y2="472.50" stroke="#e5e7eb"/>
+<text x="598" y="476.50" text-anchor="end" font-family="sans-serif" font-size="10">50</text>
+<line x1="606" y1="468.75" x2="966" y2="468.75" stroke="#e5e7eb"/>
+<text x="598" y="472.75" text-anchor="end" font-family="sans-serif" font-size="10">51</text>
+<line x1="606" y1="465.00" x2="966" y2="465.00" stroke="#e5e7eb"/>
+<text x="598" y="469.00" text-anchor="end" font-family="sans-serif" font-size="10">52</text>
+<line x1="606" y1="461.25" x2="966" y2="461.25" stroke="#e5e7eb"/>
+<text x="598" y="465.25" text-anchor="end" font-family="sans-serif" font-size="10">53</text>
+<line x1="606" y1="457.50" x2="966" y2="457.50" stroke="#e5e7eb"/>
+<text x="598" y="461.50" text-anchor="end" font-family="sans-serif" font-size="10">54</text>
+<line x1="606" y1="453.75" x2="966" y2="453.75" stroke="#e5e7eb"/>
+<text x="598" y="457.75" text-anchor="end" font-family="sans-serif" font-size="10">55</text>
+<line x1="606" y1="450.00" x2="966" y2="450.00" stroke="#e5e7eb"/>
+<text x="598" y="454.00" text-anchor="end" font-family="sans-serif" font-size="10">56</text>
+<text x="606.00" y="677" text-anchor="middle" font-family="sans-serif" font-size="10">0.1</text>
+<text x="696.00" y="677" text-anchor="middle" font-family="sans-serif" font-size="10">0.3</text>
+<text x="786.00" y="677" text-anchor="middle" font-family="sans-serif" font-size="10">0.5</text>
+<text x="876.00" y="677" text-anchor="middle" font-family="sans-serif" font-size="10">0.7</text>
+<text x="966.00" y="677" text-anchor="middle" font-family="sans-serif" font-size="10">0.9</text>
+<polyline points="606.04,656.03 651.09,655.43 696.13,654.50 741.18,653.08 785.78,650.45 830.82,646.73 875.87,638.89 920.91,618.00 965.96,523.05" fill="none" stroke="#9333ea" stroke-width="2.5"/>
+<polyline points="606.04,655.81 651.09,655.19 696.13,654.30 741.18,652.91 785.78,650.64 830.82,646.43 875.87,637.33 920.91,611.34 965.96,471.00" fill="none" stroke="#9333ea" stroke-width="2.5" stroke-dasharray="6 4"/>
+<line x1="606" y1="450" x2="606" y2="660" stroke="#111827"/>
+<line x1="606" y1="660" x2="966" y2="660" stroke="#111827"/>
+<text x="786.0" y="695" text-anchor="middle" font-family="sans-serif" font-size="11">Load factor</text>
+<line x1="718" y1="462" x2="742" y2="462" stroke="#9333ea" stroke-width="2.5"/>
+<text x="748" y="466" font-family="sans-serif" font-size="11">measured</text>
+<line x1="841" y1="462" x2="865" y2="462" stroke="#9333ea" stroke-width="2.5" stroke-dasharray="6 4"/>
+<text x="871" y="466" font-family="sans-serif" font-size="11">theory</text>
+</svg>
