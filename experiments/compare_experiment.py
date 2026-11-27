@@ -43,16 +43,22 @@ def measure(
     keys: list[str] = []
     unique_keys: HashTable[bool] = HashTable(capacity * 2)
     while len(keys) < capacity:
-        key = f"item-{key_generator.getrandbits(64):016x}"
+        key = f"https://example.com/{key_generator.getrandbits(64):016x}"
         found, _, _ = unique_keys.find(key)
         if not found:
             unique_keys.set(key, True)
             keys.append(key)
 
     miss_generator = random.Random(2027)
-    miss_keys = [
-        f"absent-{miss_generator.getrandbits(64):016x}" for _ in range(capacity)
-    ]
+    miss_keys: list[str] = []
+    seen_miss_keys: HashTable[bool] = HashTable(capacity * 2)
+    while len(miss_keys) < capacity:
+        key = f"https://example.com/{miss_generator.getrandbits(64):016x}"
+        found, _, _ = unique_keys.find(key)
+        already_seen, _, _ = seen_miss_keys.find(key)
+        if not found and not already_seen:
+            seen_miss_keys.set(key, True)
+            miss_keys.append(key)
     results = []
     for requested_load in load_factors:
         item_count = round(requested_load * capacity)
@@ -119,7 +125,7 @@ def write_csv(measurements: list[ComparisonMeasurement], path: Path) -> None:
         "linear_unsuccessful_theory",
     )
     with path.open("w", newline="", encoding="utf-8") as output:
-        writer = csv.writer(output)
+        writer = csv.writer(output, lineterminator="\n")
         writer.writerow(columns)
         for result in measurements:
             writer.writerow(

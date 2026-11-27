@@ -25,17 +25,15 @@
 <text x="779.0" y="76" text-anchor="middle" font-family="sans-serif" font-size="15">Chaining: unsuccessful</text>
 <line x1="606" y1="306.00" x2="966" y2="306.00" stroke="#e5e7eb"/>
 <text x="598" y="310.00" text-anchor="end" font-family="sans-serif" font-size="10">0</text>
-<line x1="606" y1="201.00" x2="966" y2="201.00" stroke="#e5e7eb"/>
-<text x="598" y="205.00" text-anchor="end" font-family="sans-serif" font-size="10">1</text>
 <line x1="606" y1="96.00" x2="966" y2="96.00" stroke="#e5e7eb"/>
-<text x="598" y="100.00" text-anchor="end" font-family="sans-serif" font-size="10">2</text>
+<text x="598" y="100.00" text-anchor="end" font-family="sans-serif" font-size="10">1</text>
 <text x="606.00" y="323" text-anchor="middle" font-family="sans-serif" font-size="10">0.1</text>
 <text x="696.00" y="323" text-anchor="middle" font-family="sans-serif" font-size="10">0.3</text>
 <text x="786.00" y="323" text-anchor="middle" font-family="sans-serif" font-size="10">0.5</text>
 <text x="876.00" y="323" text-anchor="middle" font-family="sans-serif" font-size="10">0.7</text>
 <text x="966.00" y="323" text-anchor="middle" font-family="sans-serif" font-size="10">0.9</text>
-<polyline points="606.04,297.68 651.09,288.33 696.13,276.20 741.18,266.75 785.78,253.92 830.82,245.43 875.87,232.53 920.91,219.48 965.96,209.56" fill="none" stroke="#dc2626" stroke-width="2.5"/>
-<polyline points="606.04,295.49 651.09,284.98 696.13,274.47 741.18,263.96 785.78,253.55 830.82,243.04 875.87,232.53 920.91,222.02 965.96,211.51" fill="none" stroke="#dc2626" stroke-width="2.5" stroke-dasharray="6 4"/>
+<polyline points="606.04,295.60 651.09,273.77 696.13,254.71 741.18,227.51 785.78,201.83 830.82,183.12 875.87,167.09 920.91,142.58 965.96,118.90" fill="none" stroke="#dc2626" stroke-width="2.5"/>
+<polyline points="606.04,284.98 651.09,263.96 696.13,242.94 741.18,221.92 785.78,201.10 830.82,180.08 875.87,159.06 920.91,138.04 965.96,117.02" fill="none" stroke="#dc2626" stroke-width="2.5" stroke-dasharray="6 4"/>
 <line x1="606" y1="96" x2="606" y2="306" stroke="#111827"/>
 <line x1="606" y1="306" x2="966" y2="306" stroke="#111827"/>
 <text x="786.0" y="341" text-anchor="middle" font-family="sans-serif" font-size="11">Load factor</text>
@@ -194,7 +192,7 @@
 <text x="786.00" y="677" text-anchor="middle" font-family="sans-serif" font-size="10">0.5</text>
 <text x="876.00" y="677" text-anchor="middle" font-family="sans-serif" font-size="10">0.7</text>
 <text x="966.00" y="677" text-anchor="middle" font-family="sans-serif" font-size="10">0.9</text>
-<polyline points="606.04,655.95 651.09,655.34 696.13,654.25 741.18,653.12 785.78,650.28 830.82,646.62 875.87,638.20 920.91,617.91 965.96,530.16" fill="none" stroke="#9333ea" stroke-width="2.5"/>
+<polyline points="606.04,656.03 651.09,655.43 696.13,654.50 741.18,653.08 785.78,650.45 830.82,646.73 875.87,638.89 920.91,618.00 965.96,523.05" fill="none" stroke="#9333ea" stroke-width="2.5"/>
 <polyline points="606.04,655.81 651.09,655.19 696.13,654.30 741.18,652.91 785.78,650.64 830.82,646.43 875.87,637.33 920.91,611.34 965.96,471.00" fill="none" stroke="#9333ea" stroke-width="2.5" stroke-dasharray="6 4"/>
 <line x1="606" y1="450" x2="606" y2="660" stroke="#111827"/>
 <line x1="606" y1="660" x2="966" y2="660" stroke="#111827"/>
