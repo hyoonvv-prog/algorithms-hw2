@@ -106,7 +106,7 @@ class HashTableTests(unittest.TestCase):
             self.assertEqual(table.get("third"), "third")
 
         with self.subTest(table_type=LinearProbingHashTable.__name__):
-            table = LinearProbingHashTable(capacity=3)
+            table = LinearProbingHashTable(capacity=3, max_load=None)
             for key in ("first", "second", "third"):
                 table.set(key, key)
 
