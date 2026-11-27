@@ -10,7 +10,7 @@ from typing import Callable
 from src.hash_table import HashTable
 
 
-CAPACITY = 1009
+CAPACITY = 4093
 OUTPUT_DIRECTORY = Path(__file__).resolve().parent
 
 
@@ -28,23 +28,29 @@ def measure() -> list[Measurement]:
     measurements = []
     key_generator = random.Random(2026)
     keys: list[str] = []
-    unique_keys: HashTable[bool] = HashTable(CAPACITY)
+    unique_keys: HashTable[bool] = HashTable(CAPACITY, max_load=None)
     while len(keys) < 4 * CAPACITY:
-        key = f"item-{key_generator.getrandbits(64):016x}"
+        key = f"https://example.com/{key_generator.getrandbits(64):016x}"
         found, _, _ = unique_keys.find(key)
         if not found:
             unique_keys.set(key, True)
             keys.append(key)
 
     miss_generator = random.Random(2027)
-    miss_keys = [
-        f"absent-{miss_generator.getrandbits(64):016x}"
-        for _ in range(4 * CAPACITY)
-    ]
+    miss_keys: list[str] = []
+    seen_miss_keys: HashTable[bool] = HashTable(CAPACITY, max_load=None)
+    while len(miss_keys) < 4 * CAPACITY:
+        key = f"https://example.com/{miss_generator.getrandbits(64):016x}"
+        found, _, _ = unique_keys.find(key)
+        already_seen, _, _ = seen_miss_keys.find(key)
+        if not found and not already_seen:
+            seen_miss_keys.set(key, True)
+            miss_keys.append(key)
+
     for quarter_steps in range(1, 17):
         requested_load = quarter_steps / 4
         item_count = round(requested_load * CAPACITY)
-        table: HashTable[int] = HashTable(CAPACITY)
+        table: HashTable[int] = HashTable(CAPACITY, max_load=None)
         for index, key in enumerate(keys[:item_count]):
             table.set(key, index)
 
@@ -61,15 +67,14 @@ def measure() -> list[Measurement]:
                 raise RuntimeError("absent key unexpectedly matched during measurement")
             unsuccessful_comparisons += comparisons
 
-        load_factor = item_count / CAPACITY
         measurements.append(
             Measurement(
-                load_factor=load_factor,
+                load_factor=requested_load,
                 item_count=item_count,
                 successful_measured=successful_comparisons / item_count,
-                successful_theory=1 + load_factor / 2,
+                successful_theory=1 + requested_load / 2,
                 unsuccessful_measured=unsuccessful_comparisons / item_count,
-                unsuccessful_theory=load_factor,
+                unsuccessful_theory=requested_load,
             )
         )
     return measurements
@@ -77,7 +82,7 @@ def measure() -> list[Measurement]:
 
 def write_csv(measurements: list[Measurement], path: Path) -> None:
     with path.open("w", newline="", encoding="utf-8") as output:
-        writer = csv.writer(output)
+        writer = csv.writer(output, lineterminator="\n")
         writer.writerow(
             (
                 "load_factor",
@@ -199,8 +204,8 @@ def write_svg(measurements: list[Measurement], path: Path) -> None:
 
 def main() -> None:
     measurements = measure()
-    csv_path = OUTPUT_DIRECTORY / "probe_results.csv"
-    svg_path = OUTPUT_DIRECTORY / "probe_results.svg"
+    csv_path = OUTPUT_DIRECTORY / "results.csv"
+    svg_path = OUTPUT_DIRECTORY / "results.svg"
     write_csv(measurements, csv_path)
     write_svg(measurements, svg_path)
 
